@@ -1,3 +1,5 @@
+
+
 var Board = function( selector ) {
   // Aqui denerá ir el código que tenga que ver con tu tablero 
   
@@ -8,6 +10,9 @@ var Board = function( selector ) {
   
   function initialize() {
     // Que debe de pasar cuando se crea un nuevo tablero?
+      var tablero = "<div id='"+selector+"' class='tablero'></div>"
+      $("body").append(tablero);
+      $(".menu").append("<div class='active' style='cursor:pointer;'>"+selector+"</div>");
   };
 
   initialize();
@@ -28,10 +33,22 @@ PostIt.prototype.makePost = function(tablero, top, left){
 }
 
 $(function() {
-  // Esta es la fucnión que correrá cuando este listo el DOM 
-    tablero1 = new Board('#board');
     
-    tablero1.selector.dblclick(function(e){
+    $("#nuevo").click(function(){
+       $(".new-tablero").fadeIn(1000); 
+    });
+    
+    
+    $("#crear").click(function(){
+        nombre_tablero = $("#nombre-t").val();
+        tablero = new Board("#" + nombre_tablero);
+    });
+    
+    
+  // Esta es la fucnión que correrá cuando este listo el DOM 
+    /*tablero = new Board('#board');
+    
+    tablero.selector.dblclick(function(e){
         
         var posX = $(this).position().left, posY = $(this).position().top;
         var left = e.pageX - posX
@@ -39,7 +56,7 @@ $(function() {
         
         var post_it = new PostIt()
         
-        post_it.makePost(tablero1.selector, top, left);
+        post_it.makePost(tablero.selector, top, left);
         
         $(".post-it").draggable({handle: ".header", stack: "div"});
         
@@ -53,7 +70,7 @@ $(function() {
         
     });
     
-
+*/
     
    
 });
