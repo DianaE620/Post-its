@@ -39,3 +39,8 @@
   min-height: 70px;
   outline: none;
 }
+
+.close{
+    cursor: pointer;
+
+}

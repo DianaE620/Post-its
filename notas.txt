@@ -1,0 +1,7 @@
+http://jqueryui.com/
+https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
+http://stackoverflow.com/questions/5217311/setting-z-index-on-draggable-elements
+https://jqueryui.com/draggable/#visual-feedback
+event.stopPropagation()
+https://api.jquery.com/event.stoppropagation/
+https://www.youtube.com/watch?v=O8wwnhdkPE4
