@@ -41,7 +41,7 @@ var PostIt = function(contenido = "...") {
 PostIt.prototype.makePost = function(tablero, top, left){
     post_it = '<div id="'+this.count_post+'" class="post-it" style="top:'+top+';left:'+left+'"><div class="header"><span class="close">X</span></div><div class="content" contenteditable="true" >'+this.contenido+'</div></div>'
     
-    tablero.append(post_it)
+    $(tablero).append(post_it);
 }
 
 $(function() {
@@ -67,6 +67,26 @@ $(function() {
     });
     
     
+    $("body").on("dblclick", ".tablero", function(e){
+        var tablero_actual = $(this).attr("id");
+        var posX = $(this).position().left, posY = $(this).position().top;
+        var left = e.pageX - posX
+        var top = e.pageY - posY
+        var post_it = new PostIt();
+        
+        post_it.makePost("#"+tablero_actual, top, left);
+        
+        $(".post-it").draggable({handle: ".header", stack: "div"});
+        
+        $(".post-it").dblclick(function(event){
+            event.stopPropagation();
+        });
+        
+        $(".header span").on("click", function(){
+            $(this).parent().parent().remove();
+        });
+        
+    });
     
   // Esta es la fucnión que correrá cuando este listo el DOM 
     /*tablero = new Board('#board');
